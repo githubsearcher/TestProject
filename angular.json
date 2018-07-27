@@ -26,8 +26,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "../TestProject-master/node_modules/jquery/dist/jquery.min.js",
-              "../TestProject-master/node_modules/bootstrap/dist/js/bootstrap.js"
+              "../TestProject/node_modules/jquery/dist/jquery.min.js",
+              "../TestProject/node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
