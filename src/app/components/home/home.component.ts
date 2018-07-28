@@ -89,8 +89,8 @@
       deleteReplyComment(i) {
          if(i == this.currentUser.id) {
         this.storeRepliedData.splice(i, 1);
-        this.replyToComment = false;
-        this._storage.setItem('storeData', JSON.stringify(this.storeRepliedData));
+        // this.replyToComment = false;
+        this._storage.setItem('storeRepliedData', JSON.stringify(this.storeRepliedData));
        }
       }
 
