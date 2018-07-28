@@ -1,6 +1,5 @@
     import { Component, OnInit } from '@angular/core';
     import { StorageService } from '../../services/localStorage.service';
-    // import * as $ from 'jquery';
     declare var $: any;
     @Component({
       selector: 'app-home',
@@ -38,7 +37,6 @@
          if (msg !== '') {
           if (status === 'create') {
             // this.storeData = [];
-            console.log('this.currentUser>>>>>............', this.currentUser);
             this.currentUser['message'] = msg;
             this.storeData.push(this.currentUser);
             this.messageVal = '';
@@ -65,10 +63,6 @@
           }
           msg = '';
         }
-
-        console.log('this.storeData ............', this.storeData);
-         console.log('this.storeData ............', this.storeRepliedData);
-
          this._storage.setItem('storeData', JSON.stringify(this.storeData));
          this._storage.setItem('storeRepliedData', JSON.stringify(this.storeRepliedData));
       }
@@ -85,18 +79,26 @@
 
       // delete Comment
       deleteComment(i) {
+        if(i == this.currentUser.id) {
         this.storeData.splice(i, 1);
+        this._storage.setItem('storeData', JSON.stringify(this.storeData));
+        }
       }
 
       // delete replied comment
       deleteReplyComment(i) {
+         if(i == this.currentUser.id) {
         this.storeRepliedData.splice(i, 1);
         this.replyToComment = false;
+        this._storage.setItem('storeData', JSON.stringify(this.storeRepliedData));
+       }
       }
 
       // edit comment
       editComment(data) {
+        if(data.id == this.currentUser.id) {
          this.updateMessage = data.message;
+       }
       }
 
       // edit replied comment

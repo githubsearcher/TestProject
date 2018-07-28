@@ -12,13 +12,12 @@ export class HeaderComponent implements OnInit {
   currentUser: any;
   ngOnInit() {
       this.currentUser =  JSON.parse(localStorage.getItem('current_users'));
-      console.log('current_users>>>>>>>>>>>.....', this.currentUser);
   }
 
   logout() {
       this._storage.removeItem('current_users');
-      this.router.navigate(['/']);
       location.reload();
+      this.router.navigate(['/']);
   }
 
 }

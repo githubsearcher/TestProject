@@ -3,12 +3,6 @@
         <div class="form-group">
         <input type="text" name="messageVal" class="form-control" placeholder="Write a comment..." [(ngModel)]="messageVal" (keyup.enter)="sendMessage(messageVal, 'create')">
         </div>
-        <!-- <ul id="menu">
-          <li>Like</li>
-          <li>Reply</li>
-          <li>Edit</li>
-          <li>Delete</li>
-        </ul> -->
         <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body" *ngFor=" let data of storeData; let i = index ">
               <h5><b>{{data.name}}</b></h5>
@@ -16,25 +10,13 @@
               <ul class="list-horizontal">
                 <li *ngIf="!unLike"><a (click)="like(i)">Like</a></li>
                 <li *ngIf="unLike"><a (click)="unlike(i)">Unlike</a></li>
-                <!-- <li><a (click)="reply($event, i)">Reply</a></li> -->
-                <li><a data-toggle="modal" data-target="#myModal" (click)="editComment(data)">Edit</a></li>
-                <li><a (click)="deleteComment(i)">Delete</a></li>
+                <li ><a data-toggle="modal" data-target="#myModal" (click)="editComment(data)">Edit</a></li>
+                <li><a (click)="deleteComment(data.id)">Delete</a></li>
                 <li><a data-toggle="collapse" href="#collapse2" (click)="reply($event, i)">Reply</a></li>
               </ul>
             </div>
         </div>
         <div id="collapse2" class="panel-collapse collapse in" *ngIf="replyToComment">
-            <!-- <div class="panel-body" *ngFor=" let data of storeData; let i = index ">
-              <h5><b>{{data.name}}</b></h5>
-              {{data.message}} -->
-              <!-- <ul class="list-horizontal">
-                <li *ngIf="!unLike"><a (click)="like(i)">Like</a></li>
-                <li *ngIf="unLike"><a (click)="unlike(i)">Unlike</a></li>
-                <li><a (click)="reply($event, i)">Reply</a></li>
-                <li><a data-toggle="modal" data-target="#myModal" (click)="edit(data)">Edit</a></li>
-                <li><a (click)="delete(i)">Delete</a></li>
-              </ul> -->
-            <!-- </div> -->
             <input type="text" name="replyMsg" class="form-control" placeholder="Reply to a comment..." [(ngModel)]="replyMsg" (keyup.enter)="sendMessage(replyMsg, 'reply')">
             <div class="panel-body" *ngFor=" let data of storeRepliedData; let i = index ">
               <h5><b>{{data.name}}</b></h5>
@@ -42,9 +24,8 @@
               <ul class="list-horizontal">
                 <li *ngIf="!unLikereply"><a (click)="likeReply(i)">Like</a></li>
                 <li *ngIf="unLikereply"><a (click)="unlikeReply(i)">Unlike</a></li>
-                <!-- <li><a (click)="reply($event, i)">Reply</a></li> -->
                 <li><a data-toggle="modal" data-target="#myModal2" (click)="editReplyComment(data)">Edit</a></li>
-                <li><a (click)="deleteReplyComment(i)">Delete</a></li>
+                <li><a (click)="deleteReplyComment(data.id)">Delete</a></li>
                 <li><a data-toggle="collapse" href="#collapse2" (click)="reply($event, i)">Reply</a></li>
               </ul>
             </div>
