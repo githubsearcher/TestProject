@@ -18,32 +18,59 @@
       replyMsg: any;
       storeRepliedData: any = [];
       updateReplyMessage: any;
+      dataValue: any;
+      storeReply: any;
       constructor(private _storage: StorageService) { }
 
       ngOnInit() {
         this.currentUser =  JSON.parse(localStorage.getItem('loginUser'));
+        this.dataValue= JSON.parse(localStorage.getItem('storeData'));
+        if(this.dataValue && this.dataValue.length > 0) {
+        this.storeData  = this.dataValue;
+        }
+        this.storeReply = JSON.parse(localStorage.getItem('storeRepliedData'));
+        if(this.storeReply && this.storeReply.length > 0) {
+        this.storeRepliedData = this.storeReply;
+        }
       }
 
       sendMessage(msg, status) {
          if (msg !== '') {
-          if (status === 'create' || status === 'update') {
-            this.storeData = [];
+          if (status === 'create') {
+            // this.storeData = [];
+            console.log('this.currentUser>>>>>............', this.currentUser);
             this.currentUser['message'] = msg;
-            this.currentUser['messageToreply'] = msg;
             this.storeData.push(this.currentUser);
             this.messageVal = '';
+          }
+          if(status === 'update') {
+            this.currentUser['message'] = msg;
             this.updateMessage = '';
             $('#myModal').modal('hide');
             $('.modal-backdrop').remove();
           }
+
+           if(status === 'updateToReply') {
+            this.currentUser['messageToreply'] = msg;
+            this.updateMessage = '';
+            $('#myModal2').modal('hide');
+            $('.modal-backdrop').remove();
+          }
+
           if (status === 'reply') {
-              this.storeRepliedData = [];
+             // this.storeRepliedData = [];
               this.currentUser['messageToreply'] = msg;
               this.storeRepliedData.push(this.currentUser);
               this.replyMsg = '';
           }
           msg = '';
         }
+
+        console.log('this.storeData ............', this.storeData);
+         console.log('this.storeData ............', this.storeRepliedData);
+
+         this._storage.setItem('storeData', JSON.stringify(this.storeData));
+         this._storage.setItem('storeRepliedData', JSON.stringify(this.storeRepliedData));
       }
 
       // like comment
