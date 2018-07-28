@@ -1,28 +1,11 @@
-.login_form {
-    background: #fff;
-    width: 100%;
-    float: left;
-    position: absolute;
-    max-width: 408px;
-    padding: 30px 25px 61px 25px;
-    top: -71px;
-    left: 67px;
-    transition: all 0.5s;
-    z-index: 2;
-    min-height: 414px;
-}
-
-.login_form h1 {
-    margin-bottom: 10px;
-    color: #333;
-    font-weight: 400;
-    position: relative;
-    font-size: 20px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-}
-
 .errMsg {
     color: red;
+}
+
+
+.center-block {
+  top: 30%;
+  left: 50%;
+  transform: translate3d(-50%,-50%, 0);
+  position: absolute;
 }

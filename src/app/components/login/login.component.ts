@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   checkLoginUser(userData) {
-    console.log('checkLoginUser<<<<<<<<<<<<<<,,', userData);
     this.getUser = JSON.parse(localStorage.getItem('current_users'));
     this.getUser.map(obj => {
       if(obj.email == userData.email && obj.password == userData.password) {
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.invalid = true;
         this.errorMsg = 'Unauthorized User'
-        console.log('unauthorized user>>>>>>.....');
         return;
       }
    });
