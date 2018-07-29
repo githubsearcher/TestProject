@@ -11,11 +11,11 @@ export class HeaderComponent implements OnInit {
   constructor(private _storage: StorageService, private router: Router) { }
   currentUser: any;
   ngOnInit() {
-      this.currentUser =  JSON.parse(localStorage.getItem('current_users'));
+      this.currentUser =  JSON.parse(localStorage.getItem('loginUser'));
   }
 
   logout() {
-      this._storage.removeItem('current_users');
+      this._storage.removeItem('loginUser');
       location.reload();
       this.router.navigate(['/']);
   }
