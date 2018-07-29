@@ -25,6 +25,24 @@ export class LoginComponent implements OnInit {
         name:"Rahul Kumar",
         email:"rahul@gmail.com",
         password: '12345'
+      },
+      {
+        id: '3',
+        name:"Komal Garg",
+        email:"komal@gmail.com",
+        password: '12345'
+      },
+      {
+        id: '4',
+        name:"Suraj Mehta",
+        email:"suraj@gmail.com",
+        password: '12345'
+      },
+      {
+        id: '5',
+        name:"Sanjeev Soni",
+        email:"sanjeev@gmail.com",
+        password: '12345'
       }
     ]
     this._storage.setItem('current_users', JSON.stringify(ListOfUser));
